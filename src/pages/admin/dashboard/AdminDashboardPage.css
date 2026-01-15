@@ -1,3 +1,25 @@
+.admin-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 12px;
+}
+
+.admin-refresh {
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.admin-refresh:hover {
+  border-color: var(--accent);
+}
+
 .admin-actions {
   margin-top: 16px;
   display: flex;
@@ -41,12 +63,134 @@
 
 .stat p {
   margin-top: 8px;
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 900;
 }
 
 @media (min-width: 768px) {
   .admin-stats {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1100px) {
+  .admin-stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* stat glow */
+.glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.glow::after {
+  content: "";
+  position: absolute;
+  inset: -60px;
+  background: radial-gradient(
+    circle,
+    rgba(212, 175, 55, 0.18),
+    transparent 55%
+  );
+  transform: translate(30px, 10px);
+  pointer-events: none;
+}
+
+.revenue {
+  border-color: rgba(212, 175, 55, 0.35);
+}
+
+.gold {
+  color: var(--accent);
+}
+
+/* latest bookings */
+.latest {
+  margin-top: 18px;
+  border-radius: 18px;
+  padding: 16px;
+}
+
+.latest-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 12px;
+}
+
+.latest-head h3 {
+  font-weight: 900;
+  font-size: 18px;
+}
+
+.latest-link {
+  font-weight: 900;
+  color: var(--accent);
+}
+
+.latest-table {
+  margin-top: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.latest-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 140px 140px;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.latest-row:hover {
+  transform: translateY(-2px);
+  border-color: rgba(212, 175, 55, 0.45);
+}
+
+.l-id {
+  font-weight: 900;
+  color: var(--text-muted);
+}
+
+.l-car {
+  font-weight: 900;
+}
+
+.l-amt {
+  font-weight: 900;
+  text-align: right;
+}
+
+.l-status {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 700px) {
+  .latest-row {
+    grid-template-columns: 70px 1fr;
+    grid-template-areas:
+      "id car"
+      "amt status";
+  }
+
+  .l-id {
+    grid-area: id;
+  }
+  .l-car {
+    grid-area: car;
+  }
+  .l-amt {
+    grid-area: amt;
+    text-align: left;
+  }
+  .l-status {
+    grid-area: status;
+    justify-content: flex-start;
   }
 }

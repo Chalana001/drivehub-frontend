@@ -15,18 +15,20 @@ export default function Navbar() {
 
         <nav className="nav-links">
           <Link to="/">Home</Link>
-          <Link to="/cars">Cars</Link>
 
           {isLoggedIn && role === "ADMIN" && (
             <>
-              <Link to="/admin/dashboard">Admin</Link>
+              <Link to="/admin/dashboard">Dashboard</Link>
               <Link to="/admin/bookings">Bookings</Link>
               <Link to="/admin/cars">Cars</Link>
             </>
           )}
 
           {isLoggedIn && role === "CUSTOMER" && (
-            <Link to="/bookings">My Bookings</Link>
+            <>
+              <Link to="/cars">Cars</Link>
+              <Link to="/bookings">My Bookings</Link>
+            </>
           )}
         </nav>
 
