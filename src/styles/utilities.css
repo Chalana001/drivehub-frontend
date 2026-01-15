@@ -15,3 +15,8 @@
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
+@media (max-width: 600px) {
+  .container {
+    padding: 0 18px; /* ✅ mobile side padding වැඩි */
+  }
+}

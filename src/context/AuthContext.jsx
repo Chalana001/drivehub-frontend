@@ -1,34 +1,37 @@
 import { createContext, useEffect, useState } from "react";
 
-export const AuthContext = createContext(null);
+export const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
   const [token, setToken] = useState(null);
   const [role, setRole] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const savedToken = localStorage.getItem("drivehub_token");
-    const savedRole = localStorage.getItem("drivehub_role");
+    // ✅ restore session after refresh
+    const t = localStorage.getItem("drivehub_token");
+    const r = localStorage.getItem("drivehub_role");
 
-    if (savedToken && savedRole) {
-      setToken(savedToken);
-      setRole(savedRole);
-    }
+    if (t) setToken(t);
+    if (r) setRole(r);
+
+    setIsLoading(false);
   }, []);
 
-  const login = (jwtToken, userRole) => {
-    setToken(jwtToken);
-    setRole(userRole);
+  const login = (newToken, newRole) => {
+    localStorage.setItem("drivehub_token", newToken);
+    localStorage.setItem("drivehub_role", newRole);
 
-    localStorage.setItem("drivehub_token", jwtToken);
-    localStorage.setItem("drivehub_role", userRole);
+    setToken(newToken);
+    setRole(newRole);
   };
 
   const logout = () => {
-    setToken(null);
-    setRole(null);
     localStorage.removeItem("drivehub_token");
     localStorage.removeItem("drivehub_role");
+
+    setToken(null);
+    setRole(null);
   };
 
   return (
@@ -37,6 +40,7 @@ export default function AuthProvider({ children }) {
         token,
         role,
         isLoggedIn: !!token,
+        isLoading,
         login,
         logout,
       }}
