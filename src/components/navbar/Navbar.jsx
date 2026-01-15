@@ -18,7 +18,11 @@ export default function Navbar() {
           <Link to="/cars">Cars</Link>
 
           {isLoggedIn && role === "ADMIN" && (
-            <Link to="/admin/dashboard">Admin</Link>
+            <>
+              <Link to="/admin/dashboard">Admin</Link>
+              <Link to="/admin/bookings">Bookings</Link>
+              <Link to="/admin/cars">Cars</Link>
+            </>
           )}
 
           {isLoggedIn && role === "CUSTOMER" && (

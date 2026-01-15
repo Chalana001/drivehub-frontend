@@ -1,0 +1,54 @@
+.bd-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 12px;
+}
+
+.bd-top h4 {
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.bd-sub {
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.bd-grid {
+  margin-top: 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.bd-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+.bd-row span {
+  color: var(--text-muted);
+  font-weight: 800;
+}
+
+.bd-row b {
+  font-weight: 900;
+}
+
+.bd-amount {
+  border-color: rgba(212, 175, 55, 0.45);
+}
+
+.bd-note {
+  margin-top: 14px;
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 13px;
+}

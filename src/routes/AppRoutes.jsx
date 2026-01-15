@@ -10,6 +10,13 @@ import CarDetailsPage from "../pages/cars/CarDetailsPage";
 import MyBookingsPage from "../pages/bookings/MyBookingsPage";
 import ProtectedRoute from "./ProtectedRoute";
 
+import AdminBookingsPage from "../pages/admin/bookings/AdminBookingsPage";
+import AdminRoute from "./AdminRoute";
+import AdminDashboardPage from "../pages/admin/dashboard/AdminDashboardPage";
+import AdminCarsPage from "../pages/admin/cars/AdminCarsPage";
+
+
+
 
 
 export default function AppRoutes() {
@@ -40,8 +47,41 @@ export default function AppRoutes() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/admin/dashboard"
+          element={
+            <AdminRoute>
+              <AdminDashboardPage />
+            </AdminRoute>
+          }
+        />
 
+        <Route
+          path="/admin/bookings"
+          element={
+            <AdminRoute>
+              <AdminBookingsPage />
+            </AdminRoute>
+          }
+        />
 
+        <Route
+          path="/admin/cars"
+          element={
+            <AdminRoute>
+              <AdminCarsPage />
+            </AdminRoute>
+          }
+        />
+
+        <Route
+          path="/admin/bookings"
+          element={
+            <AdminRoute>
+              <AdminBookingsPage />
+            </AdminRoute>
+          }
+        />
 
 
       </Route>

@@ -3,6 +3,9 @@ import { cancelBooking, getMyBookings } from "../../api/bookingApi";
 import BookingStatusBadge from "../../components/booking/BookingStatusBadge";
 import "../../styles/utilities.css";
 import "./MyBookingsPage.css";
+import Modal from "../../components/ui/Modal";
+import BookingDetails from "../../components/booking/BookingDetails";
+
 
 const TABS = ["ALL", "PENDING", "APPROVED", "REJECTED", "CANCELLED"];
 
@@ -14,6 +17,14 @@ export default function MyBookingsPage() {
   const [tab, setTab] = useState("ALL");
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("NEWEST"); // NEWEST | OLDEST | AMOUNT_HIGH
+
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState(null);
+
+  const openDetails = (booking) => {
+    setSelected(booking);
+    setOpen(true);
+  };
 
   const loadBookings = async () => {
     try {
@@ -121,7 +132,11 @@ export default function MyBookingsPage() {
       ) : (
         <section className="b-grid">
           {filteredBookings.map((b) => (
-            <article className="b-item card" key={b.bookingId}>
+            <article
+              className="b-item card b-click"
+              key={b.bookingId}
+              onClick={() => openDetails(b)}
+            >
               <div className="b-head">
                 <h3 className="b-car">
                   {b.carBrand} {b.carModel}
@@ -149,20 +164,32 @@ export default function MyBookingsPage() {
                 <button
                   className="b-cancel"
                   disabled={b.status !== "PENDING"}
-                  onClick={() => handleCancel(b.bookingId)}
+                  onClick={(e) => {
+                    e.stopPropagation();        // ✅ modal open නොවෙන්න stop
+                    handleCancel(b.bookingId);  // ✅ cancel function call
+                  }}
                   title={
                     b.status !== "PENDING"
                       ? "Only pending bookings can be cancelled"
                       : "Cancel booking"
                   }
                 >
-                  Cancel
-                </button>
-              </div>
+                Cancel
+              </button>
+            </div>
             </article>
-          ))}
-        </section>
-      )}
-    </main>
+      ))}
+    </section>
+  )
+}
+<Modal
+  open={open}
+  title="Booking Details"
+  onClose={() => setOpen(false)}
+>
+  <BookingDetails booking={selected} />
+</Modal>
+
+    </main >
   );
 }
