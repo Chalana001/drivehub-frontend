@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { loginUser } from "../../api/authApi";
 import useAuth from "../../hooks/useAuth";
 import "../../styles/utilities.css";
 import "./LoginPage.css";
 
 export default function LoginPage() {
-  const { login } = useAuth();
+  const { login, role } = useAuth(); // ✅ role from context after login
   const navigate = useNavigate();
 
   const [form, setForm] = useState({ email: "", password: "" });
@@ -22,13 +21,12 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      const res = await loginUser(form);
-      const { token, role } = res.data;
-
-      login(token, role);
+      // ✅ cookie login (no token)
+      const user = await login(form.email, form.password); 
+      // login() should call /auth/login then /auth/me and return {role}
 
       // redirect based on role
-      if (role === "ADMIN") navigate("/admin/dashboard");
+      if (user?.role === "ADMIN") navigate("/admin/dashboard");
       else navigate("/cars");
     } catch (err) {
       setMsg("❌ Invalid email or password");
