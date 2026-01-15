@@ -22,15 +22,23 @@ export default function LoginPage() {
 
     try {
       // ✅ cookie login (no token)
-      const user = await login(form.email, form.password); 
+      const user = await login(form.email, form.password);
       // login() should call /auth/login then /auth/me and return {role}
 
       // redirect based on role
       if (user?.role === "ADMIN") navigate("/admin/dashboard");
       else navigate("/cars");
     } catch (err) {
-      setMsg("❌ Invalid email or password");
-    } finally {
+      if (err.code === "ECONNABORTED") {
+        setMsg("⏳ Server is slow. Please wait and try again.");
+      } else if (!err.response) {
+        setMsg("❌ Server not responding. Try again.");
+      } else if (err.response.status === 401 || err.response.status === 403) {
+        setMsg("❌ Invalid email or password");
+      } else {
+        setMsg("❌ Login failed. Try again.");
+      }
+    }finally {
       setLoading(false);
     }
   };
