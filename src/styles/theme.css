@@ -1,0 +1,62 @@
+/* ===========================
+   DriveHub Theme Tokens
+   Luxury Black + Gold
+   Light default + Dark toggle
+   =========================== */
+
+:root {
+  --radius: 16px;
+  --shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+
+  /* spacing */
+  --container: 1180px;
+  --nav-height: 72px;
+}
+
+/* ✅ Light mode (default) */
+:root,
+:root[data-theme="light"] {
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --surface-2: #f4f4f5;
+
+  --text: #111827;
+  --text-muted: #6b7280;
+
+  --border: #e5e7eb;
+
+  --primary: #111827;     /* near-black */
+  --accent: #d4af37;      /* gold */
+  --accent-2: #fbbf24;    /* lighter gold */
+
+  --btn-text: #ffffff;
+
+  /* status colors */
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #3b82f6;
+}
+
+/* ✅ Dark mode */
+:root[data-theme="dark"] {
+  --bg: #06070a;
+  --surface: #0b0f19;
+  --surface-2: #111827;
+
+  --text: #f9fafb;
+  --text-muted: #9ca3af;
+
+  --border: #1f2937;
+
+  --primary: #fbbf24;      /* gold highlight in dark */
+  --accent: #eab308;
+  --accent-2: #f59e0b;
+
+  --btn-text: #0b0f19;
+
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #60a5fa;
+}

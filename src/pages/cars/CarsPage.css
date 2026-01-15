@@ -1,0 +1,51 @@
+.page-title {
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.page-sub {
+  margin-top: 8px;
+  color: var(--text-muted);
+}
+
+.cars-top {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cars-search {
+  height: 46px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  padding: 0 14px;
+  outline: none;
+}
+
+.cars-search:focus {
+  border-color: var(--accent);
+}
+
+.muted2 {
+  margin-top: 20px;
+  color: var(--text-muted);
+}
+
+.err {
+  margin-top: 20px;
+  color: var(--danger);
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .cars-top {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+  }
+  .cars-search {
+    width: 320px;
+  }
+}

@@ -1,0 +1,122 @@
+.car-item {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  transition: 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* ✅ important for uniform grid */
+}
+
+.car-item:hover {
+  transform: translateY(-3px);
+  border-color: rgba(212, 175, 55, 0.6); /* gold border */
+}
+
+.car-img {
+  position: relative;
+  height: 190px; /* ✅ fixed height gives uniform */
+  background: var(--surface-2);
+}
+
+.car-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ✅ maintain same look */
+}
+
+.car-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+}
+
+/* car status badge colors */
+.car-badge.available {
+  background: rgba(34, 197, 94, 0.18);
+  color: var(--success);
+}
+.car-badge.rented {
+  background: rgba(245, 158, 11, 0.18);
+  color: var(--warning);
+}
+.car-badge.maintenance {
+  background: rgba(239, 68, 68, 0.18);
+  color: var(--danger);
+}
+
+.car-body {
+  padding: 14px 14px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.car-title {
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1.2;
+  min-height: 40px; /* ✅ keeps same height even long titles */
+}
+
+.car-sub {
+  margin-top: 8px;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.4;
+  min-height: 38px; /* ✅ same-size */
+}
+
+.car-bottom {
+  margin-top: auto; /* ✅ keeps bottom section aligned */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.car-price {
+  font-weight: 900;
+  font-size: 16px;
+}
+
+.car-price span {
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.car-price small {
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.car-btn {
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 900;
+  background: var(--accent);
+  color: var(--btn-text);
+  transition: 0.2s ease;
+  white-space: nowrap;
+}
+
+.car-btn:hover {
+  filter: brightness(0.95);
+  transform: translateY(-1px);
+}
+
+/* mobile image height slightly smaller */
+@media (max-width: 420px) {
+  .car-img {
+    height: 170px;
+  }
+}

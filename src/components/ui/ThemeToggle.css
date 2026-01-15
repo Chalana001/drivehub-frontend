@@ -1,0 +1,17 @@
+.theme-btn {
+  height: 40px;
+  width: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.theme-btn:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}

@@ -1,0 +1,16 @@
+.auth {
+  display: grid;
+  place-items: center;
+  min-height: calc(100vh - var(--nav-height));
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 24px;
+}
+
+.muted {
+  margin-top: 8px;
+  color: var(--text-muted);
+}

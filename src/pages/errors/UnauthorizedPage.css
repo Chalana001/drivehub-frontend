@@ -1,0 +1,10 @@
+.un {
+  min-height: calc(100vh - var(--nav-height));
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+.un p {
+  color: var(--text-muted);
+  margin-top: 8px;
+}
