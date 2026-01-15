@@ -21,15 +21,16 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      // ✅ cookie login (no token)
-      const user = await login(form.email, form.password);
-      // login() should call /auth/login then /auth/me and return {role}
+      setMsg("");
+      setLoading(true);
 
-      // redirect based on role
+      const user = await login(form.email, form.password);
+
       if (user?.role === "ADMIN") navigate("/admin/dashboard");
       else navigate("/cars");
+
     } catch (err) {
-      if (err.code === "ECONNABORTED") {
+      if (err.code === "ECONNABORTED" || err.code === "ERR_NETWORK") {
         setMsg("⏳ Server is slow. Please wait and try again.");
       } else if (!err.response) {
         setMsg("❌ Server not responding. Try again.");
@@ -38,7 +39,7 @@ export default function LoginPage() {
       } else {
         setMsg("❌ Login failed. Try again.");
       }
-    }finally {
+    } finally {
       setLoading(false);
     }
   };
