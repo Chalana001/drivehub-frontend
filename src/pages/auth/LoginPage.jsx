@@ -30,15 +30,14 @@ export default function LoginPage() {
       else navigate("/cars");
 
     } catch (err) {
-      if (err.code === "ECONNABORTED" || err.code === "ERR_NETWORK") {
-        setMsg("⏳ Server is slow. Please wait and try again.");
-      } else if (!err.response) {
-        setMsg("❌ Server not responding. Try again.");
-      } else if (err.response.status === 401 || err.response.status === 403) {
+      console.log("LOGIN ERROR:", err);
+
+      if (err.response?.status === 401 || err.response?.status === 403) {
         setMsg("❌ Invalid email or password");
       } else {
-        setMsg("❌ Login failed. Try again.");
+        setMsg("⚠️ Login success, but session failed (cookies/refresh issue).");
       }
+
     } finally {
       setLoading(false);
     }
