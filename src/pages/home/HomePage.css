@@ -1,17 +1,130 @@
 .home {
-  min-height: calc(100vh - var(--nav-height));
+  min-height: calc(100vh - 90px);
   display: grid;
   place-items: center;
+}
+
+.hero {
+  width: 100%;
+  max-width: 760px;
   text-align: center;
+  padding: 18px 10px;
+}
+
+.hero-logo {
+  width: min(460px, 90%);
+  height: auto;
+  margin: 0 auto 12px;
+  display: block;
+  filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.25));
 }
 
 .title {
-  font-size: 48px;
-  font-weight: 900;
+  font-size: clamp(36px, 7vw, 64px);
+  font-weight: 1000;
+  letter-spacing: -1px;
 }
 
 .subtitle {
-  margin-top: 12px;
+  margin-top: 10px;
+  font-size: clamp(14px, 2.5vw, 18px);
   color: var(--text-muted);
-  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.hero-actions {
+  margin-top: 22px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* buttons */
+.btn {
+  height: 46px;
+  padding: 0 18px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  text-decoration: none;
+  border: 1px solid var(--border);
+}
+
+.btn.primary {
+  background: var(--accent);
+  color: var(--btn-text);
+  border-color: var(--accent);
+}
+
+.btn.primary:hover {
+  filter: brightness(0.95);
+  transform: translateY(-1px);
+  transition: 0.2s;
+}
+
+.btn.ghost {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.btn.ghost:hover {
+  border-color: rgba(212, 175, 55, 0.5);
+  transform: translateY(-1px);
+  transition: 0.2s;
+}
+
+.features {
+  margin-top: 34px;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr;
+}
+
+.feature {
+  padding: 16px;
+  border-radius: 18px;
+  text-align: left;
+  min-height: 150px; /* ✅ same size */
+  transition: 0.2s;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.feature:hover {
+  border-color: rgba(212, 175, 55, 0.55);
+  transform: translateY(-2px);
+}
+
+.f-icon {
+  height: 44px;
+  width: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.feature h3 {
+  font-size: 16px;
+  font-weight: 1000;
+  margin-bottom: 6px;
+}
+
+.feature p {
+  color: var(--text-muted);
+  font-weight: 700;
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+@media (min-width: 900px) {
+  .features {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
